@@ -216,6 +216,53 @@ PORT=3003 npm run dev
 
 ---
 
+**JMC Added on 22 May 2026**
+
+- Install package: npm install elliptic (elliptic because the blockchain is using public/private key cryptography (ECDSA) to sign and verify transactions)
+
+        - It helps to Generate key pairs (wallets)
+        - It helps to Sign transactions (frontend)
+        - It helps to Verify transactions (backend)
+
+Backend modification:-
+
+- New Wallet.contrall.js being added into the controllers
+- Updated transaction contoller
+- Updated blockchain and index models
+- New wallet.routes.js being added into the routes
+- Updated transaction routes
+- Added service as new DIR and included persistence.service.js for the persistence.
+- Updated the validator.js
+- *** new blockchain.json file will be generated once the app gets started to store the transaction related info. It's also placed in the gitingore so that it do not get uploaded into the Repo.
+
+
+Frontend modification:-
+- New Wallet as new component has been added.
+- Updated the TransactionForm
+- new wallet.api.js has been added inside api DIR
+- Updated addTransaction function in the blockchain.api.js
+- Updated the App.js to include the wallet feature into the app.
+
+Important Note: Browse the App in two different web browser as the wallet private key being stored locally and in order to simulate the fund transfer between two wallet's public key.
+
+Do this:-
+    -  Firstly open one browser and access the app: http://localhost:3000/
+    -  Generate the wallet ( you will see the publick key and newly generated wallet balance will be zero (0)).
+
+    -  Secondly open another browser and access the app: http://localhost:3000/
+    -  Generate the wallet ( you will see the publick key and newly generated wallet balance will be zero (0)).
+
+    -Finally from any of the opened browser, Create a Transaction
+            - From Address Field: key in the exact public key from the browser wallet you are creating the transaction
+            - To Address Field: key in the exact public key from another browser wallet
+            - put any amount you want to transfer
+            - Click on Add Transaction button
+            - Click on the Mine block so that it can be immediately completed.
+            - now refres the page from both browser and see the balance gets reflect.
+    
+    But it would be better to use userstate to reflect the balance correctly once the transaction is being completed.
+
+
 ## License
 
 MIT — for learning and assessment purposes.
